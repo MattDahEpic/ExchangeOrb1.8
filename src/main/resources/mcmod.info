@@ -1,0 +1,16 @@
+[
+{
+  "modid": "exchangeorb",
+  "name": "Exchange Orb",
+  "description": "Simple mod for converting various vanilla resources.",
+  "version": "1.8-1.6",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MattDahEpic"],
+  "credits": "Based on the stone thing from EE2.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
