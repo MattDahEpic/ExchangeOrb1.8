@@ -2,14 +2,14 @@ package com.mattdahepic.exchangeorb;
 
 import com.mattdahepic.exchangeorb.config.Config;
 import com.mattdahepic.exchangeorb.item.ItemExchangeOrb;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 
 @Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION,guiFactory = "com.mattdahepic.exchangeorb.config.ExchangeOrbConfigFactory")
@@ -18,7 +18,7 @@ public class ExchangeOrb {
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "1.8-1.6";
+    public static final String VERSION = "mc1.8-v1.6";
     public static final String NAME = "Exchange Orb";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
