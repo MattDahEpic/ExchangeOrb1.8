@@ -1,8 +1,6 @@
 package com.mattdahepic.exchangeorb.item;
 
 import com.mattdahepic.exchangeorb.config.Config;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,7 +32,7 @@ public class ItemExchangeOrb extends Item {
             return null;
         } else { //if infinite
             //System.out.println("infinite, returning input");
-            return stack;
+            return new ItemStack(this);
         }
     }
 }

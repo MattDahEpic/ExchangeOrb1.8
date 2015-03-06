@@ -18,7 +18,7 @@ public class ExchangeOrb {
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "mc1.8-v1.6";
+    public static final String VERSION = "mc1.8-v1.6.1";
     public static final String NAME = "Exchange Orb";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
