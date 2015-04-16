@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "mc1.8-v1.6.2"
+version = "v1.7-mc1.8"
 group= "com.mattdahepic.exchangeorb" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "exchangeorb"
 
@@ -61,15 +61,17 @@ processResources
         exclude 'mcmod.info'
     }
 }
-
 task devJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'dev'
 }
 
-
 artifacts {
     archives devJar
 }
-
-sourceSets { main { output.resourcesDir = output.classesDir } }
+apply plugin: 'idea'
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}

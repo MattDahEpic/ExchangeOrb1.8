@@ -17,7 +17,7 @@ public class ClientProxy extends CommonProxy {
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ExchangeOrb.itemExchangeOrb, new ItemMeshDefinition() {
             @Override
             public ModelResourceLocation getModelLocation(ItemStack p_178113_1_) {
-                return new ModelResourceLocation("exchangeorb:exchangeOrb", "inventory");
+                return new ModelResourceLocation("exchangeorb:exchangeOrb","inventory");
             }
         });
         }
