@@ -1,2 +1,2 @@
 1.8-1.8
-Updated mod to use server config values and require my core mod.
+Update required core mod version and add in game version checker
