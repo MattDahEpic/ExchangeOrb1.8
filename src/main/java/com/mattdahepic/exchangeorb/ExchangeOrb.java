@@ -20,14 +20,15 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[v1.0-mc1.8,);")
+@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[1.8-1.1.1,);")
 public class ExchangeOrb {
     @Mod.Instance("exchangeorb")
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "v1.7-mc1.8";
+    public static final String VERSION = "1.8-1.8";
     public static final String NAME = "Exchange Orb";
+    public static final String UPDATE_URL = "https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.8/master/version.txt";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
     public static CommonProxy proxy;
@@ -57,10 +58,11 @@ public class ExchangeOrb {
     }
     @Mod.EventHandler
     public void loadComplete (FMLLoadCompleteEvent event) {
-        UpdateChecker.updateCheck(MODID, NAME, "https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.8/master/version.txt", VERSION);
+        UpdateChecker.updateCheck(MODID, NAME, UPDATE_URL, VERSION, false, null);
     }
     @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
+        UpdateChecker.updateCheck(MODID,NAME,UPDATE_URL,VERSION,true,event.player);
         if (!event.player.worldObj.isRemote) {
             if (event.player instanceof EntityPlayerMP) {
                 LogHelper.info(MODID,"Sending configuration settings packet from the server to the connecting client "+event.player.getDisplayName()+".");

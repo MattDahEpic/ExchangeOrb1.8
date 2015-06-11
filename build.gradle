@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "v1.7-mc1.8"
+version = "1.8-1.8"
 group= "com.mattdahepic.exchangeorb" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "exchangeorb"
 
