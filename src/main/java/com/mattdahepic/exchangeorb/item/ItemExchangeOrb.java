@@ -1,9 +1,13 @@
 package com.mattdahepic.exchangeorb.item;
 
 import com.mattdahepic.exchangeorb.config.Config;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 public class ItemExchangeOrb extends Item {
     public ItemExchangeOrb () {
@@ -24,6 +28,19 @@ public class ItemExchangeOrb extends Item {
     public boolean isDamageable () {
         this.setMaxDamage(0);
         return Config.orbHasDurability;
+    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIcon = iconRegister.registerIcon("exchangeorb:exchangeOrb");
+    }
+    @Override
+    public IIcon getIconFromDamage (int meta) {
+        return this.itemIcon;
+    }
+    @Override
+    public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemStack) {
+        return false;
     }
     @Override
     public boolean hasContainerItem (ItemStack item) {

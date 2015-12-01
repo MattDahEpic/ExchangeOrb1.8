@@ -3,9 +3,9 @@ package com.mattdahepic.exchangeorb.network;
 import com.mattdahepic.exchangeorb.ExchangeOrb;
 import com.mattdahepic.exchangeorb.config.Config;
 import com.mattdahepic.mdecore.helpers.LogHelper;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 
 public class SyncPacket implements IMessageHandler<SyncPacket.SyncMessage,IMessage> {

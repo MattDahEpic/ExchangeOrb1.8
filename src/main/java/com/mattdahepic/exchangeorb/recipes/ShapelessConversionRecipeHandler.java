@@ -1,7 +1,7 @@
 package com.mattdahepic.exchangeorb.recipes;
 
 import com.mattdahepic.exchangeorb.ExchangeOrb;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapelessRecipes;

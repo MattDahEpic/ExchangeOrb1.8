@@ -1,7 +1,7 @@
 package com.mattdahepic.exchangeorb;
 
 import com.mattdahepic.exchangeorb.recipes.RecipeRegisterer;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
     public void registerRenderers() {

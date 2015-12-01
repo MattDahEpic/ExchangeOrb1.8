@@ -1,7 +1,7 @@
 package com.mattdahepic.exchangeorb.recipes;
 
 import com.mattdahepic.exchangeorb.ExchangeOrb;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

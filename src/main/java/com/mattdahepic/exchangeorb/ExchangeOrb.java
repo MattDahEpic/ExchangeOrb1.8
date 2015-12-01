@@ -6,29 +6,28 @@ import com.mattdahepic.exchangeorb.network.PacketHandler;
 import com.mattdahepic.exchangeorb.network.SyncPacket;
 import com.mattdahepic.mdecore.helpers.LogHelper;
 import com.mattdahepic.mdecore.update.UpdateChecker;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 
-@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[1.8-1.1.1,);")
+@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[v1.0-mc1.7.10,);")
 public class ExchangeOrb {
     @Mod.Instance("exchangeorb")
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "1.8-1.8";
+    public static final String VERSION = "v1.7-mc1.7.10";
     public static final String NAME = "Exchange Orb";
-    public static final String UPDATE_URL = "https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.8/master/version.txt";
 
     @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
     public static CommonProxy proxy;
@@ -58,11 +57,10 @@ public class ExchangeOrb {
     }
     @Mod.EventHandler
     public void loadComplete (FMLLoadCompleteEvent event) {
-        UpdateChecker.updateCheck(MODID, NAME, UPDATE_URL, VERSION, false, null);
+        UpdateChecker.updateCheck(MODID,NAME,"https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.7.10/master/version.txt",VERSION);
     }
     @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
-        UpdateChecker.updateCheck(MODID,NAME,UPDATE_URL,VERSION,true,event.player);
         if (!event.player.worldObj.isRemote) {
             if (event.player instanceof EntityPlayerMP) {
                 LogHelper.info(MODID,"Sending configuration settings packet from the server to the connecting client "+event.player.getDisplayName()+".");

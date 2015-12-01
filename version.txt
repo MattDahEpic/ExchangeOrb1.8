@@ -1,2 +1,2 @@
-1.8-1.8
-Update required core mod version and add in game version checker
+v1.7-mc1.7.10
+Updated mod to use server config values and require my core mod.

@@ -17,16 +17,18 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.8-1.8"
+version = "v1.7-mc1.7.10"
 group= "com.mattdahepic.exchangeorb" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "exchangeorb"
 
 minecraft {
-    version = "1.8-11.14.1.1319"
+    version = "1.7.10-10.13.2.1264"
     runDir = "eclipse"
 }
 
 dependencies {
+    //compile 'com.mattdahepic.mdecore:mdecore:v1.0-mc1.7.10:dev'
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
