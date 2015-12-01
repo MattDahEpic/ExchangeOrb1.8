@@ -1,28 +1,22 @@
 package com.mattdahepic.exchangeorb.recipes;
 
-import com.mattdahepic.exchangeorb.config.Config;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import com.mattdahepic.exchangeorb.config.GeneralConfig;
+import com.mattdahepic.exchangeorb.config.ResourceConfig;
 
 public class RecipeRegisterer {
-    public static void registerRecipes  () {
+    public void registerRecipes  () {
         //orb
-        ShapedOrbRecipeHandler.registerRecipes(Config.orbHardMode);
-        //converions
-        ItemStack charcoal = new ItemStack(Items.coal,1,1);
-        ItemStack coal = new ItemStack(Items.coal,1,0);
-        ItemStack iron = new ItemStack(Items.iron_ingot,1,0);
-        ItemStack redstone = new ItemStack(Items.redstone,1,0);
-        ItemStack lapis = new ItemStack(Items.dye,1,4);
-        ItemStack gold = new ItemStack(Items.gold_ingot,1,0);
-        ItemStack diamond = new ItemStack(Items.diamond,1,0);
-        ItemStack emerald = new ItemStack(Items.emerald,1,0);
-        ShapelessConversionRecipeHandler.registerRecipes(charcoal, coal, Config.charcoalCoal_Charcoal, Config.charcoalCoal_Coal);
-        ShapelessConversionRecipeHandler.registerRecipes(coal,iron,Config.coalIron_Coal,Config.coalIron_Iron);
-        ShapelessConversionRecipeHandler.registerRecipes(iron,redstone,Config.ironRedstone_Iron,Config.ironRedstone_Redstone);
-        ShapelessConversionRecipeHandler.registerRecipes(redstone,lapis,Config.redstoneLapis_Redstone,Config.redstoneLapis_Lapis);
-        ShapelessConversionRecipeHandler.registerRecipes(lapis,gold,Config.lapisGold_Lapis,Config.lapisGold_Gold);
-        ShapelessConversionRecipeHandler.registerRecipes(gold,diamond,Config.goldDiamond_Gold,Config.goldDiamond_Diamond);
-        ShapelessConversionRecipeHandler.registerRecipes(diamond,emerald,Config.diamondEmerald_Diamond,Config.diamondEmerald_Emerald);
+        OrbRecipeHandler.registerRecipes(GeneralConfig.orbHardMode);
+        ItemsList i = new ItemsList();
+        //resources
+        ResourceConversionRecipeHandler.registerRecipes(i.charcoal, i.coal, ResourceConfig.charcoal_coal);
+        ResourceConversionRecipeHandler.registerRecipes(i.coal, i.iron, ResourceConfig.coal_iron);
+        ResourceConversionRecipeHandler.registerRecipes(i.iron, i.redstone, ResourceConfig.iron_redstone);
+        ResourceConversionRecipeHandler.registerRecipes(i.redstone, i.lapis, ResourceConfig.redstone_lapis);
+        ResourceConversionRecipeHandler.registerRecipes(i.lapis, i.gold, ResourceConfig.lapis_gold);
+        ResourceConversionRecipeHandler.registerRecipes(i.gold, i.diamond, ResourceConfig.gold_diamond);
+        ResourceConversionRecipeHandler.registerRecipes(i.diamond, i.emerald, ResourceConfig.diamond_emerald);
+        //mob drops
+
     }
 }

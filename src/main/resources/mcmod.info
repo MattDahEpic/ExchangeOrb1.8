@@ -2,8 +2,8 @@
 {
   "modid": "exchangeorb",
   "name": "Exchange Orb",
-  "description": "Simple mod for converting various vanilla resources.",
-  "version": "1.8-1.8",
+  "description": "Simple mod for converting various vanilla resources and mob drops.",
+  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",

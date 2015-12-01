@@ -1,74 +1,76 @@
 package com.mattdahepic.exchangeorb;
 
-import com.mattdahepic.exchangeorb.config.Config;
-import com.mattdahepic.exchangeorb.item.ItemExchangeOrb;
+import com.mattdahepic.exchangeorb.config.GeneralConfig;
+import com.mattdahepic.exchangeorb.config.MobDropConfig;
+import com.mattdahepic.exchangeorb.config.ResourceConfig;
+import com.mattdahepic.exchangeorb.network.GeneralSync;
 import com.mattdahepic.exchangeorb.network.PacketHandler;
-import com.mattdahepic.exchangeorb.network.SyncPacket;
-import com.mattdahepic.mdecore.helpers.LogHelper;
+import com.mattdahepic.exchangeorb.network.ResourceSync;
 import com.mattdahepic.mdecore.update.UpdateChecker;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = "required-after:mdecore@[1.8-1.1.1,);")
+@Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = ExchangeOrb.DEPENDENCIES)
 public class ExchangeOrb {
-    @Mod.Instance("exchangeorb")
+    @Mod.Instance(MODID)
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
-    public static final String VERSION = "1.8-1.8";
+    public static final String VERSION = "@VERSION@";
     public static final String NAME = "Exchange Orb";
-    public static final String UPDATE_URL = "https://raw.githubusercontent.com/MattDahEpic/ExchangeOrb1.8/master/version.txt";
+    public static final String DEPENDENCIES = "required-after:mdecore@[1.8.8-1.5,);";
+    public static final String UPDATE_URL = "https://raw.githubusercontent.com/MattDahEpic/Version/master/"+ MinecraftForge.MC_VERSION+"/"+MODID+".txt";
+    public static final String CLIENT_PROXY = "com.mattdahepic.exchangeorb.ClientProxy";
+    public static final String COMMON_PROXY = "com.mattdahepic.exchangeorb.CommonProxy";
 
-    @SidedProxy(clientSide = "com.mattdahepic.exchangeorb.client.ClientProxy", serverSide = "com.mattdahepic.exchangeorb.CommonProxy")
+    public static final Logger logger = LogManager.getLogger(MODID);
+
+    @SidedProxy(clientSide = CLIENT_PROXY, serverSide = COMMON_PROXY)
     public static CommonProxy proxy;
 
     public static Configuration configFile;
 
-    //item
     public static Item itemExchangeOrb;
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent e) {
         FMLCommonHandler.instance().bus().register(instance);
-        Config.load(event);
+        GeneralConfig.load(MODID,e,new GeneralConfig());
+        ResourceConfig.load(MODID+"-resources", e, new ResourceConfig());
+        MobDropConfig.load(MODID+"-mobdrops",e,new MobDropConfig());
+        proxy.registerItems();
+        proxy.registerRenders();
+        PacketHandler.initPackets();
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        PacketHandler.initPackets();
-        itemExchangeOrb = new ItemExchangeOrb();
-        proxy.registerBlocksItems();
+    public void init(FMLInitializationEvent e) {
+        UpdateChecker.checkRemote(MODID, UPDATE_URL);
         proxy.registerRecipes();
-        proxy.registerRenderers();
-    }
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        LogHelper.info(MODID,"Ready to transmute!");
-    }
-    @Mod.EventHandler
-    public void loadComplete (FMLLoadCompleteEvent event) {
-        UpdateChecker.updateCheck(MODID, NAME, UPDATE_URL, VERSION, false, null);
     }
     @SubscribeEvent
-    public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent event) {
-        UpdateChecker.updateCheck(MODID,NAME,UPDATE_URL,VERSION,true,event.player);
-        if (!event.player.worldObj.isRemote) {
-            if (event.player instanceof EntityPlayerMP) {
-                LogHelper.info(MODID,"Sending configuration settings packet from the server to the connecting client "+event.player.getDisplayName()+".");
-                IMessage sync = new SyncPacket.SyncMessage(Config.charcoalCoal_Charcoal,Config.charcoalCoal_Coal,Config.coalIron_Coal,Config.coalIron_Iron,Config.ironRedstone_Iron,Config.ironRedstone_Redstone,Config.redstoneLapis_Redstone,Config.redstoneLapis_Lapis,Config.lapisGold_Lapis,Config.lapisGold_Gold,Config.goldDiamond_Gold,Config.goldDiamond_Diamond,Config.diamondEmerald_Diamond,Config.diamondEmerald_Emerald,Config.orbHasDurability,Config.orbDurability,Config.orbHardMode);
-                PacketHandler.net.sendTo(sync, (EntityPlayerMP) event.player);
-            }
+    public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent e) {
+        UpdateChecker.printMessageToPlayer(MODID,e.player);
+        if (!e.player.worldObj.isRemote) {
+            logger.info("Sending configuration settings packet(s) from the server to the connecting client " + e.player.getDisplayName() + ".");
+            IMessage general = new GeneralSync.Message(GeneralConfig.orbDurability,GeneralConfig.orbHardMode,GeneralConfig.orbHasDurability);
+            PacketHandler.net.sendTo(general,(EntityPlayerMP)e.player);
+            IMessage resources = new ResourceSync.Message(ResourceConfig.charcoal_coal,ResourceConfig.coal_iron,ResourceConfig.iron_redstone,ResourceConfig.redstone_lapis,ResourceConfig.lapis_gold,ResourceConfig.gold_diamond,ResourceConfig.diamond_emerald);
+            PacketHandler.net.sendTo(resources,(EntityPlayerMP)e.player);
+            //IMessage drops = ;
+            //PacketHandler.net.sendTo(drops,(EntityPlayerMP)e.player);
         }
     }
 }
