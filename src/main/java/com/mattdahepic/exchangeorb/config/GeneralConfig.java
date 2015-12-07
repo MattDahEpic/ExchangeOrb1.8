@@ -3,6 +3,7 @@ package com.mattdahepic.exchangeorb.config;
 import com.mattdahepic.mdecore.config.annot.Comment;
 import com.mattdahepic.mdecore.config.annot.Config;
 import com.mattdahepic.mdecore.config.annot.Range;
+import com.mattdahepic.mdecore.config.annot.RestartReq;
 import com.mattdahepic.mdecore.config.sync.ConfigProcessor;
 import com.mattdahepic.mdecore.config.sync.ConfigSyncable;
 
@@ -15,10 +16,16 @@ public class GeneralConfig extends ConfigSyncable {
     @Range(min = 1,max = 9999)
     public static int orbDurability = 200;
     @Config
-    @Comment({"Should the orb require a nether star to create instead of a stone block?"})
+    @Comment({"Should the orb require a nether star to create instead of a diamond?"})
     public static boolean orbHardMode = false;
-    //public static boolean enableResources = true; //TODO: make these work
-    //public static boolean enableMobDrops = true; //TODO: make these work
+    @Config
+    @Comment({"Should the orb be able to convert resoruces such as diamond and iron?","More options are available in the exchabngeorb-resources.cfg file."})
+    @RestartReq(RestartReqs.REQUIRES_WORLD_RESTART)
+    public static boolean enableResources = true;
+    @Config
+    @Comment({"Should the orb be able to convert mob drops?","More options are available in the exchangeorb-mobdrops.cfg file"})
+    @RestartReq(RestartReqs.REQUIRES_MC_RESTART) //TODO: make this world restart somehow
+    public static boolean enableMobDrops = true;
 
     private static ConfigSyncable INSTANCE;
     public static ConfigSyncable instance(String configName) {

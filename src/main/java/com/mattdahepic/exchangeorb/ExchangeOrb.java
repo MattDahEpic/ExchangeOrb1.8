@@ -38,6 +38,7 @@ public class ExchangeOrb {
     public static Configuration configFile;
 
     public static Item itemExchangeOrb;
+    public static Item itemMobEssence;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -57,5 +58,6 @@ public class ExchangeOrb {
     @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent e) {
         UpdateChecker.printMessageToPlayer(MODID,e.player);
+        //TODO: send packet to client that runs proxy.registerRecipes(); on recieve
     }
 }
