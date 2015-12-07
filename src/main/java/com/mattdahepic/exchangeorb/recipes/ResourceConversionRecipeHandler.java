@@ -1,20 +1,19 @@
 package com.mattdahepic.exchangeorb.recipes;
 
 import com.mattdahepic.exchangeorb.ExchangeOrb;
-import com.mattdahepic.exchangeorb.config.ResourceConfigSection;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceConversionRecipeHandler {
-    public static void registerRecipes (ItemStack lowItem,ItemStack highItem,ResourceConfigSection config) {
-        GameRegistry.addRecipe(recipeHighToLow(lowItem,highItem,config.amountLow,config.amountHigh));
-        GameRegistry.addRecipe(recipeLowToHigh(lowItem,highItem,config.amountLow,config.amountHigh));
+    public static void registerRecipes (ItemStack lowItem,ItemStack highItem,int amountLow,int amountHigh) {
+        GameRegistry.addRecipe(recipeHighToLow(lowItem,highItem,amountLow,amountHigh));
+        GameRegistry.addRecipe(recipeLowToHigh(lowItem,highItem,amountLow,amountHigh));
     }
     private static IRecipe recipeHighToLow (ItemStack lowItem,ItemStack highItem,int lowCount,int highCount) {
         ItemStack output = new ItemStack(lowItem.getItem(),lowCount,lowItem.getItemDamage());
