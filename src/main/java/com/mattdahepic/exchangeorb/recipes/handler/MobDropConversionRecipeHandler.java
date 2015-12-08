@@ -32,7 +32,8 @@ public class MobDropConversionRecipeHandler {
         return new ShapelessRecipes(output,input);
     }
     private static IRecipe create (ItemStack mobDrop,int dropWorth) {
-        ItemStack output = new ItemStack(mobDrop.getItem(),2,mobDrop.getMetadata());
+        ItemStack output = mobDrop.copy();
+        output.stackSize = 2;
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(mobDrop);
         for (int j = 0; j < dropWorth; j++) {

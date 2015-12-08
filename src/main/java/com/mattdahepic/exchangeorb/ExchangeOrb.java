@@ -3,7 +3,10 @@ package com.mattdahepic.exchangeorb;
 import com.mattdahepic.exchangeorb.config.GeneralConfig;
 import com.mattdahepic.exchangeorb.config.MobDropConfig;
 import com.mattdahepic.exchangeorb.config.ResourceConfig;
+import com.mattdahepic.exchangeorb.network.DummyPacket;
+import com.mattdahepic.exchangeorb.network.ExchangeOrbPacketHandler;
 import com.mattdahepic.mdecore.update.UpdateChecker;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -19,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = ExchangeOrb.MODID, name = ExchangeOrb.NAME, version = ExchangeOrb.VERSION, dependencies = ExchangeOrb.DEPENDENCIES)
 public class ExchangeOrb {
-    @Mod.Instance(MODID)
+    @Mod.Instance("exchangeorb")
     public static ExchangeOrb instance;
 
     public static final String MODID = "exchangeorb";
@@ -54,10 +57,11 @@ public class ExchangeOrb {
     public void init(FMLInitializationEvent e) {
         UpdateChecker.checkRemote(MODID, UPDATE_URL);
         proxy.registerRecipes();
+        ExchangeOrbPacketHandler.initPackets();
     }
     @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent e) {
         UpdateChecker.printMessageToPlayer(MODID,e.player);
-        //TODO: send packet to client that runs proxy.registerRecipes(); on recieve
+        ExchangeOrbPacketHandler.net.sendTo(new DummyPacket.Message(),(EntityPlayerMP)e.player);
     }
 }

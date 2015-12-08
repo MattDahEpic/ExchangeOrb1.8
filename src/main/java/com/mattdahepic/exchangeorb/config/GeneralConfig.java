@@ -19,7 +19,7 @@ public class GeneralConfig extends ConfigSyncable {
     @Comment({"Should the orb require a nether star to create instead of a diamond?"})
     public static boolean orbHardMode = false;
     @Config
-    @Comment({"Should the orb be able to convert resoruces such as diamond and iron?","More options are available in the exchabngeorb-resources.cfg file."})
+    @Comment({"Should the orb be able to convert resources such as diamond and iron?","More options are available in the exchabngeorb-resources.cfg file."})
     @RestartReq(RestartReqs.REQUIRES_WORLD_RESTART)
     public static boolean enableResources = true;
     @Config
