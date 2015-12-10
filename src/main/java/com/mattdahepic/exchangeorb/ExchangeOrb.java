@@ -3,14 +3,11 @@ package com.mattdahepic.exchangeorb;
 import com.mattdahepic.exchangeorb.config.GeneralConfig;
 import com.mattdahepic.exchangeorb.config.MobDropConfig;
 import com.mattdahepic.exchangeorb.config.ResourceConfig;
-import com.mattdahepic.exchangeorb.network.DummyPacket;
-import com.mattdahepic.exchangeorb.network.ExchangeOrbPacketHandler;
+import com.mattdahepic.mdecore.config.sync.ConfigSyncEvent;
 import com.mattdahepic.mdecore.update.UpdateChecker;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -28,7 +25,7 @@ public class ExchangeOrb {
     public static final String MODID = "exchangeorb";
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "Exchange Orb";
-    public static final String DEPENDENCIES = "required-after:mdecore@[1.8.8-1.6,);";
+    public static final String DEPENDENCIES = "required-after:mdecore@[1.8.8-1.6.1,);";
     public static final String UPDATE_URL = "https://raw.githubusercontent.com/MattDahEpic/Version/master/"+ MinecraftForge.MC_VERSION+"/"+MODID+".txt";
     public static final String CLIENT_PROXY = "com.mattdahepic.exchangeorb.ClientProxy";
     public static final String COMMON_PROXY = "com.mattdahepic.exchangeorb.CommonProxy";
@@ -45,7 +42,7 @@ public class ExchangeOrb {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        FMLCommonHandler.instance().bus().register(instance);
+        MinecraftForge.EVENT_BUS.register(instance);
         GeneralConfig.instance(MODID).initialize(e);
         ResourceConfig.instance(MODID+"-resources").initialize(e);
         MobDropConfig.instance(MODID+"-mobdrops").initialize(e);
@@ -57,11 +54,19 @@ public class ExchangeOrb {
     public void init(FMLInitializationEvent e) {
         UpdateChecker.checkRemote(MODID, UPDATE_URL);
         proxy.registerRecipes();
-        ExchangeOrbPacketHandler.initPackets();
     }
     @SubscribeEvent
     public void onPlayerJoinServer (PlayerEvent.PlayerLoggedInEvent e) {
         UpdateChecker.printMessageToPlayer(MODID,e.player);
-        ExchangeOrbPacketHandler.net.sendTo(new DummyPacket.Message(),(EntityPlayerMP)e.player);
+    }
+    private int configsSynced = 0;
+    @SubscribeEvent
+    public void onConfigSync (ConfigSyncEvent e) {
+        if (e.configName.equals(MODID) || e.configName.equals(MODID+"-mobdrops") || e.configName.equals(MODID+"-resources")) configsSynced++;
+        if (configsSynced == 3) {
+            logger.info("Config values synced. Reloading recipes.");
+            proxy.registerRecipes();
+            configsSynced = 0;
+        }
     }
 }

@@ -19,8 +19,8 @@ public class OrbRecipeHandler {
         }
     }
     private static IRecipe orbRecipe (boolean hardMode) {
-        ItemStack output = new ItemStack(ExchangeOrb.itemExchangeOrb);
         ItemsList i = new ItemsList();
+        ItemStack output = new ItemStack(ExchangeOrb.itemExchangeOrb);
         ItemStack[] input = new ItemStack[9];
         //row 1
         input[0] = i.rotten_flesh;
@@ -32,7 +32,7 @@ public class OrbRecipeHandler {
         input[5] = i.lapis;
         //row 3
         input[6] = i.string;
-        input[7] = i.gold;
+        input[7] = i.redstone;
         input[8] = i.gunpowder;
         recipe = new ShapedRecipes(3,3,input,output);
         return new ShapedRecipes(3,3,input,output);
