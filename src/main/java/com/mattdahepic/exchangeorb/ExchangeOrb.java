@@ -5,15 +5,16 @@ import com.mattdahepic.exchangeorb.config.MobDropConfig;
 import com.mattdahepic.exchangeorb.config.ResourceConfig;
 import com.mattdahepic.mdecore.config.sync.ConfigSyncEvent;
 import com.mattdahepic.mdecore.update.UpdateChecker;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,8 +35,6 @@ public class ExchangeOrb {
 
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = COMMON_PROXY)
     public static CommonProxy proxy;
-
-    public static Configuration configFile;
 
     public static Item itemExchangeOrb;
     public static Item itemMobEssence;
