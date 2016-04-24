@@ -1,2 +1,4 @@
-item.exchangeOrb.name=Exchange Orb
-item.mobEssence.name=Mob Essence
+item.resource_orb.name=Orb of Resource Exchange
+item.mobdrop_orb.name=Orb of Mob Drop Exchange
+item.disenchant_orb.name=Orb of Disenchanting
+item.mob_essence.name=Mob Essence
