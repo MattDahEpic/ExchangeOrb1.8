@@ -20,7 +20,7 @@ public class ItemOrb extends Item {
         nameMap.put(2,"disenchant");
     }
 
-    private static final String USES_REMAINING_KEY = "uses_remaining";
+    public static final String USES_REMAINING_KEY = "uses_remaining";
     public ItemOrb () {
         super();
         setUnlocalizedName("exchange_orb");

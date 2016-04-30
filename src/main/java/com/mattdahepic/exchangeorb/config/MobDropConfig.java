@@ -13,7 +13,6 @@ public class MobDropConfig extends ConfigSyncable {
     private static final String CAT_WITCH = "witch";
 
     @Config(comment = "Should players be allowed to convert essence to sponges?") public static boolean convertSponges = true;
-    @Config(comment = "Should wither skulls be convertable?") public static boolean convertWitherSkulls = true;
     @Config(comment = "Should music disks be converted between the types?") public static boolean convertMusicDisks = true;
     @Config(comment = "Should witch drops be convertable?") public static boolean convertWitchDrops = true;
 
@@ -31,7 +30,6 @@ public class MobDropConfig extends ConfigSyncable {
     @Config(cat = CAT_ESS,comment = "Worth of a prismarine crystal in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_PrisCrystal = 2;
     @Config(cat = CAT_ESS,comment = "Worth of a prismarine shard in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_PrisShard = 2;
     @Config(cat = CAT_ESS,comment = "Worth of a sponge in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_Sponge = 3;
-    @Config(cat = CAT_ESS,comment = "Worth of a wither skull in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_WitherSkull = 8;
 
     @Config(cat = CAT_WITCH,comment = "Worth of a glass bottle in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_GlassBottle = 1;
     @Config(cat = CAT_WITCH,comment = "Worth of a glowstone dust in essence.",range = @Config.Range(min = 1,max = 8)) public static int ess_GlowstoneDust = 2;

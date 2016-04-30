@@ -4,7 +4,9 @@ import com.mattdahepic.exchangeorb.config.GeneralConfig;
 import com.mattdahepic.exchangeorb.config.MobDropConfig;
 import com.mattdahepic.exchangeorb.config.ResourceConfig;
 import com.mattdahepic.exchangeorb.recipe.*;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.RecipeSorter;
 
 public class CommonProxy {
     public void registerRenders() {}
@@ -15,7 +17,7 @@ public class CommonProxy {
     public void registerRecipes () {
         ItemsList i = new ItemsList();
         //Register Recipe Types
-
+        RecipeSorter.register("exchangeorb:disenchant",DisenchantRecipe.class, RecipeSorter.Category.SHAPELESS,"after:minecraft:shapeless");
         //orb
         OrbRecipes.remove();
         OrbRecipes.add(GeneralConfig.orbHardMode);
@@ -48,7 +50,6 @@ public class CommonProxy {
             MobDropConversionRecipes.add(i.pris_crystal,MobDropConfig.ess_PrisCrystal);
             MobDropConversionRecipes.add(i.pris_shard, MobDropConfig.ess_PrisShard);
             if (MobDropConfig.convertSponges) MobDropConversionRecipes.add(i.sponge,MobDropConfig.ess_Sponge);
-            //if (MobDropConfig.convertWitherSkulls) MobDropConversionRecipes.add(i.wither_skull,MobDropConfig.ess_WitherSkull);
             if (MobDropConfig.convertMusicDisks) MusicDiskConversionRecipes.add();
             if (MobDropConfig.convertWitchDrops) {
                 MobDropConversionRecipes.add(i.glass_bottle,MobDropConfig.ess_GlassBottle);
@@ -59,8 +60,7 @@ public class CommonProxy {
             }
         }
         //disenchanting
-        if (GeneralConfig.enableDisenchantOrb) {
-            //TODO: readd
-        }
+        CraftingManager.getInstance().getRecipeList().remove(new DisenchantRecipe());
+        GameRegistry.addRecipe(new DisenchantRecipe());
     }
 }

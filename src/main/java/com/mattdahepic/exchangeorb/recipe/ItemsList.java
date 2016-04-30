@@ -32,7 +32,6 @@ public class ItemsList {
     public final ItemStack pris_crystal = new ItemStack(Items.PRISMARINE_CRYSTALS,1);
     public final ItemStack pris_shard = new ItemStack(Items.PRISMARINE_SHARD,1);
     public final ItemStack sponge = new ItemStack(Blocks.SPONGE,1);
-    //public final ItemStack wither_skull = new ItemStack(Blocks.SKULL,1,1);
 
     public final ItemStack glass_bottle = new ItemStack(Items.GLASS_BOTTLE,1);
     public final ItemStack glowstone_dust = new ItemStack(Items.GLOWSTONE_DUST,1);
