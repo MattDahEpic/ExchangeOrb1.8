@@ -19,7 +19,7 @@ public class GeneralConfig extends ConfigSyncable {
     public static boolean enableResourceOrb = true;
     @Config(comment = {"Should the mob drop orb be enabled?","This orb can convert mob drops such as rotten flesh and string, as well as convert music disks between each other.","More options are available in the exchangeorb-mobdrops.cfg file"},restartReq = Config.RestartReqs.REQUIRES_MC_RESTART)
     public static boolean enableMobDropOrb = true;
-    @Config(comment = {"Should the disenchanting orb be enabled?","This orb can remove enchantments from tools and weapons and place them on books."},restartReq = Config.RestartReqs.REQUIRES_MC_RESTART)
-    public static boolean enableDisenchantOrb = true;
+    /* TODO: @Config(comment = {"Should the disenchanting orb be enabled?","This orb can remove enchantments from tools and weapons and place them on books."},restartReq = Config.RestartReqs.REQUIRES_MC_RESTART)
+    public static boolean enableDisenchantOrb = true;*/
 
 }

@@ -4,9 +4,7 @@ import com.mattdahepic.exchangeorb.config.GeneralConfig;
 import com.mattdahepic.exchangeorb.config.MobDropConfig;
 import com.mattdahepic.exchangeorb.config.ResourceConfig;
 import com.mattdahepic.exchangeorb.recipe.*;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.RecipeSorter;
 
 public class CommonProxy {
     public void registerRenders() {}
@@ -17,7 +15,7 @@ public class CommonProxy {
     public void registerRecipes () {
         ItemsList i = new ItemsList();
         //Register Recipe Types
-        RecipeSorter.register("exchangeorb:disenchant",DisenchantRecipe.class, RecipeSorter.Category.SHAPELESS,"after:minecraft:shapeless");
+        //TODO: RecipeSorter.register("exchangeorb:disenchant",DisenchantRecipe.class, RecipeSorter.Category.SHAPELESS,"after:minecraft:shapeless");
         //orb
         OrbRecipes.remove();
         OrbRecipes.add(GeneralConfig.orbHardMode);
@@ -60,7 +58,7 @@ public class CommonProxy {
             }
         }
         //disenchanting
-        CraftingManager.getInstance().getRecipeList().remove(new DisenchantRecipe());
-        GameRegistry.addRecipe(new DisenchantRecipe());
+        //TODO: CraftingManager.getInstance().getRecipeList().remove(new DisenchantRecipe());
+        //TODO: GameRegistry.addRecipe(new DisenchantRecipe());
     }
 }

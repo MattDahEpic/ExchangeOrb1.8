@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy {
     public void registerRenders() {
         ModelLoader.setCustomModelResourceLocation(ExchangeOrb.itemOrb,0,new ModelResourceLocation("exchangeorb:resource_orb","inventory"));
         ModelLoader.setCustomModelResourceLocation(ExchangeOrb.itemOrb,1,new ModelResourceLocation("exchangeorb:mobdrop_orb","inventory"));
-        ModelLoader.setCustomModelResourceLocation(ExchangeOrb.itemOrb,2,new ModelResourceLocation("exchangeorb:disenchant_orb","inventory"));
+        //TODO: ModelLoader.setCustomModelResourceLocation(ExchangeOrb.itemOrb,2,new ModelResourceLocation("exchangeorb:disenchant_orb","inventory"));
         ModelLoader.setCustomModelResourceLocation(ExchangeOrb.itemEssence,0,new ModelResourceLocation("exchangeorb:mob_essence","inventory"));
     }
 }

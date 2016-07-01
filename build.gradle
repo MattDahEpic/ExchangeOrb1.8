@@ -7,36 +7,23 @@ buildscript {
             url = "http://files.minecraftforge.net/maven"
         }
     }
-    dependencies.classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    dependencies.classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-repositories {
-    maven {
-        url "http://dvs1.progwml6.com/files/maven"
-    }
-}
-
-
-version = "1.9-1.0"
+version = "1.10.2-1.0"
 group = "com.mattdahepic.exchangeorb"
 archivesBaseName = "exchangeorb"
 
 minecraft {
-    version = "1.9-12.16.0.1865-1.9"
+    version = "1.10.2-12.18.0.2005-1.10.0"
     runDir = "run"
 
     replace "@VERSION@", project.version
     replaceIn "ExchangeOrb.java"
 
-    mappings = "snapshot_20160421"
+    mappings = "snapshot_20160630"
     //makeObfSourceJar = false
-
-    useDepAts = true //JEI
-}
-
-dependencies {
-    deobfCompile "mezz.jei:jei_1.9:3.2.14.190"
 }
 
 processResources {

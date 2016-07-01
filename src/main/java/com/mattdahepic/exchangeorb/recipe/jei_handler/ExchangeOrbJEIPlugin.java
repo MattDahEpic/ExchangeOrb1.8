@@ -1,4 +1,4 @@
-package com.mattdahepic.exchangeorb.recipe.jei_handler;
+/*package com.mattdahepic.exchangeorb.recipe.jei_handler;
 
 import com.mattdahepic.exchangeorb.ExchangeOrb;
 import com.mattdahepic.exchangeorb.item.ItemOrb;
@@ -20,3 +20,4 @@ public class ExchangeOrbJEIPlugin extends BlankModPlugin {
         helpers.getNbtIgnoreList().ignoreNbtTagNames(ExchangeOrb.itemOrb,ItemOrb.USES_REMAINING_KEY);
     }
 }
+*/

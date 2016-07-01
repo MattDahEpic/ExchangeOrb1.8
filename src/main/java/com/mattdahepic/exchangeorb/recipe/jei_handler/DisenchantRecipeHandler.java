@@ -1,4 +1,4 @@
-package com.mattdahepic.exchangeorb.recipe.jei_handler;
+/*package com.mattdahepic.exchangeorb.recipe.jei_handler;
 
 import com.mattdahepic.exchangeorb.ExchangeOrb;
 import com.mattdahepic.exchangeorb.recipe.DisenchantRecipe;
@@ -116,3 +116,4 @@ public class DisenchantRecipeHandler implements IRecipeHandler<DisenchantRecipe>
         }
     }
 }
+*/

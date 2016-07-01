@@ -1,4 +1,4 @@
-package com.mattdahepic.exchangeorb.recipe;
+/*package com.mattdahepic.exchangeorb.recipe;
 
 import com.mattdahepic.exchangeorb.config.GeneralConfig;
 import com.mattdahepic.exchangeorb.item.ItemOrb;
@@ -48,7 +48,7 @@ public class DisenchantRecipe implements IRecipe {
                 }
             }
         }
-            /* PUT IN CORRECT SLOT */
+
         ItemStack[] ret = new ItemStack[inv.getSizeInventory()];
         int index = -1;
         for (int i = 0; i < inv.getHeight(); i++) {
@@ -106,3 +106,4 @@ public class DisenchantRecipe implements IRecipe {
         return new EnchantmentData(data.enchantmentobj,max);
     }
 }
+*/

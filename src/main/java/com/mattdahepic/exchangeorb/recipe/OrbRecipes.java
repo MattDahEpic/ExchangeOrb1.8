@@ -20,7 +20,7 @@ public class OrbRecipes {
     public static void add (boolean hard) {
         if (GeneralConfig.enableResourceOrb) GameRegistry.addRecipe(resource(hard));
         if (GeneralConfig.enableMobDropOrb) GameRegistry.addRecipe(mobdrop(hard));
-        if (GeneralConfig.enableDisenchantOrb) GameRegistry.addRecipe(disenchant());
+        //TODO: if (GeneralConfig.enableDisenchantOrb) GameRegistry.addRecipe(disenchant());
     }
     public static void remove () {
         for (IRecipe r : recipes) {

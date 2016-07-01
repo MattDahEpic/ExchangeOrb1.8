@@ -16,6 +16,7 @@ public class MobDropConversionRecipes {
 
     public static void add (ItemStack item, int worth) {
         GameRegistry.addRecipe(decompose(item,worth));
+        GameRegistry.addRecipe(create(item,worth));
     }
     public static void remove () {
         for (IRecipe r : recipes) {
@@ -35,6 +36,7 @@ public class MobDropConversionRecipes {
         output.stackSize = 2;
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(new ItemStack(ExchangeOrb.itemOrb,1,1));
+        input.add(item.copy());
         for (int j = 0; j < worth; j++) {
             input.add(new ItemStack(ExchangeOrb.itemEssence,1,0));
         }

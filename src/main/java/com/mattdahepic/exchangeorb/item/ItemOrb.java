@@ -17,7 +17,7 @@ public class ItemOrb extends Item {
     static {
         nameMap.put(0,"resource");
         nameMap.put(1,"mobdrop");
-        nameMap.put(2,"disenchant");
+        //TODO: nameMap.put(2,"disenchant");
     }
 
     public static final String USES_REMAINING_KEY = "uses_remaining";
