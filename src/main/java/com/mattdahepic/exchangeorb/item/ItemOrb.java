@@ -44,6 +44,7 @@ public class ItemOrb extends Item {
 
     /* DURABILITY */
     private int getUsesRemaining (ItemStack stack) {
+        if (!GeneralConfig.orbHasDurability) return -1;
         if (!stack.hasTagCompound() || !stack.getTagCompound().hasKey(USES_REMAINING_KEY)) setUsesRemaining(stack,GeneralConfig.orbDurability);
         return stack.getTagCompound().getInteger(USES_REMAINING_KEY);
     }
