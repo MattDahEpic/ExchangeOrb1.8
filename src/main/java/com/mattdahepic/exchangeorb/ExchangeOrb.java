@@ -21,7 +21,7 @@ public class ExchangeOrb {
     public static final String MODID = "exchangeorb";
     static final String VERSION = "@VERSION@";
     static final String NAME = "Exchange Orb";
-    static final String DEPENDENCIES = "required-after:mdecore@[1.10.2-1.0,);";
+    static final String DEPENDENCIES = "required-after:mdecore@[1.10.2-1.3,);";
     static final String UPDATE_JSON = "https://raw.githubusercontent.com/MattDahEpic/Version/master/"+MODID+".json";
 
     public static final Logger logger = LogManager.getLogger(MODID);

@@ -70,7 +70,7 @@ public class ItemOrb extends Item {
     public ItemStack getContainerItem(ItemStack stack) {
         switch (getUsesRemaining(stack)) {
             case -1: //infinite uses
-                return new ItemStack(this);
+                return new ItemStack(this,1,stack.getMetadata());
             case 1: //last use
                 return null;
             default: //damageable, but not last use
