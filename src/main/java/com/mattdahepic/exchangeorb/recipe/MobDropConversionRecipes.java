@@ -33,7 +33,7 @@ public class MobDropConversionRecipes {
     }
     private static IRecipe create (ItemStack item ,int worth) {
         ItemStack output = item.copy();
-        output.stackSize = 2;
+        output.setCount(2);
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(new ItemStack(ExchangeOrb.itemOrb,1,1));
         input.add(item.copy());

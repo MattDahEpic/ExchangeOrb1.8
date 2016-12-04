@@ -25,7 +25,7 @@ public class ResourceConversionRecipes {
     }
     private static IRecipe convert (ItemStack inputItem, ItemStack outputItem, int aInput, int aOutput) {
         ItemStack output = outputItem.copy();
-        output.stackSize = aOutput;
+        output.setCount(aOutput);
 
         List<ItemStack> input = new ArrayList<ItemStack>();
         input.add(new ItemStack(ExchangeOrb.itemOrb,1,0));

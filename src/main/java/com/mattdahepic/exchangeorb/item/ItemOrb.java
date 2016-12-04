@@ -5,11 +5,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ItemOrb extends Item {
@@ -36,7 +36,7 @@ public class ItemOrb extends Item {
     }
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> items) {
+    public void getSubItems(Item item, CreativeTabs tab, NonNullList<ItemStack> items) {
         for (int i : nameMap.keySet()) {
             items.add(new ItemStack(item, 1, i));
         }
