@@ -24,8 +24,8 @@ public class ResourceConfig extends ConfigSyncable {
     @Config(cat = "charcoal_coal",comment = "The amount of charcoal involved in the charcoal/coal conversion.", range = @Config.Range(min = 1,max = 8)) public static int charcoal_coalLow = 4;
     @Config(cat = "charcoal_coal",comment = "The amount of coal involved in the charcoal/coal conversion.",range = @Config.Range(min = 1,max = 8)) public static int charcoal_coalHigh = 1;
 
-    @Config(cat = "coal_iron",comment = "The amount of coal involved in the coal/iron conversion.",range = @Config.Range(min = 1,max = 8)) public static int coal_ironLow = 4;
-    @Config(cat = "coal_iron",comment = "The amount of iron involved in the coal/iron conversion.",range = @Config.Range(min = 1,max = 8)) public static int coal_ironHigh = 1;
+    @Config(cat = "coal_iron",comment = "The amount of coal involved in the coal/iron conversion.",range = @Config.Range(min = 1,max = 8)) public static int coal_ironLow = 8;
+    @Config(cat = "coal_iron",comment = "The amount of iron involved in the coal/iron conversion.",range = @Config.Range(min = 1,max = 8)) public static int coal_ironHigh = 2;
 
     @Config(cat = "iron_redstone",comment = "The amount of iron involved in the iron/redstone conversion.",range = @Config.Range(min = 1,max = 8)) public static int iron_redstoneLow = 1;
     @Config(cat = "iron_redstone",comment = "The amount of redstone involved in the iron/redstone conversion.",range = @Config.Range(min = 1,max = 8)) public static int iron_redstoneHigh = 8;

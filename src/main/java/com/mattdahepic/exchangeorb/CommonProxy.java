@@ -22,6 +22,14 @@ public class CommonProxy {
         //resources
         ResourceConversionRecipes.remove();
         if (GeneralConfig.enableResourceOrb) {
+            //sanity check, just for you Resonant Rise
+            if (ResourceConfig.charcoal_coalHigh == ResourceConfig.coal_ironLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: coal");
+            if (ResourceConfig.coal_ironHigh == ResourceConfig.iron_redstoneLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: iron");
+            if (ResourceConfig.iron_redstoneHigh == ResourceConfig.redstone_lapisLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: redstone");
+            if (ResourceConfig.redstone_lapisHigh == ResourceConfig.lapis_goldLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: lapis");
+            if (ResourceConfig.lapis_goldHigh == ResourceConfig.gold_diamondLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: gold");
+            if (ResourceConfig.gold_diamondHigh == ResourceConfig.diamond_emeraldLow) throw new RuntimeException("INVALID RESOURCE ORB CONFIGURATION: diamond");
+            //recipes
             ResourceConversionRecipes.add(i.charcoal, i.coal, ResourceConfig.charcoal_coalLow, ResourceConfig.charcoal_coalHigh);
             ResourceConversionRecipes.add(i.coal, i.iron, ResourceConfig.coal_ironLow, ResourceConfig.coal_ironHigh);
             ResourceConversionRecipes.add(i.iron, i.redstone, ResourceConfig.iron_redstoneLow, ResourceConfig.iron_redstoneHigh);
